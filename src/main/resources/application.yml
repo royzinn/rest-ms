@@ -1,0 +1,22 @@
+spring:
+  datasource:
+#    url: jdbc:postgresql://host.docker.internal/rest # Our Database URL
+    url: jdbc:postgresql://localhost/rest # Our Database URL
+    driver-class-name: org.postgresql.Driver # We're using PostgreSQL
+
+  jpa:
+    generate-ddl: false # Generate schema from entities
+    jpa.hibernate.ddl-auto: none # Schema-change strategy
+
+
+graphql:
+  packages: platterz.services.restms.models # This is the package where our database entities reside
+  servlet:
+    tracing-enabled: true
+    actuator-metrics: true
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: info, health, metrics
